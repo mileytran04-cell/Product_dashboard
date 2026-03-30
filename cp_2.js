@@ -16,4 +16,20 @@ function fetchProductsThen() {
         });
 }
 
+function handleError(error) {
+    console.log('An error occurred:', error.message);
+}
+
+// fetch with async await
+async function fetchProductsAsync() {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayProducts(data);
+    } catch(error) {
+        handleError(error);
+    }
+}
+
 fetchProductsThen();
+fetchProductsAsync();
