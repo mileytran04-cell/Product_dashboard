@@ -20,6 +20,26 @@ function handleError(error) {
     console.log('An error occurred:', error.message);
 }
 
+function displayProducts(products) {
+    let container = document.getElementById('product-container');
+
+    for (let i = 0; i < 5; i++) {
+        let product = products[i];
+        let name = product.fields.name;
+        let price = product.fields.price;
+        let image = product.fields.image[0].url;
+
+        let card = document.createElement('div');
+        card.classList.add('product-card');
+
+        card.innerHTML = '<img src="' + image + '" alt="product">' +
+                         '<h3>' + name + '</h3>' +
+                         '<p>$' + price + '</p>';
+
+        container.appendChild(card);
+    }
+}
+
 // fetch with async await
 async function fetchProductsAsync() {
     try {
